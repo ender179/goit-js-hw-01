@@ -1,16 +1,16 @@
 function getElementWidth(content, padding, border) {
-// Витягуємо числові значення з параметрів
+// видаляемо "px" і перетворюемо значення у числа
 const contentWidth = parseFloat(content);
-const paddingValue = parseFloat(padding);
-const borderValue = parseFloat(border);
+const paddingWidth = parseFloat(padding);
+const borderWidth = parseFloat(border);
     
-// Розраховуємо загальну ширину
-const totalWidth = contentWidth + 2 * paddingValue + 2 * borderValue;
+// Розраховуємо загальну ширину елемента
+const totalWidth = contentWidth + 2 * paddingWidth + 2 * borderWidth;
     
 return totalWidth;
 }
   
-// Перевірка роботи функції
+// код для Перевірки
 console.log(getElementWidth("50px", "8px", "4px")); // 74
 console.log(getElementWidth("60px", "12px", "8.5px")); // 101
 console.log(getElementWidth("200px", "0px", "0px")); // 200
