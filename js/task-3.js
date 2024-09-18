@@ -1,28 +1,42 @@
-const profile = {
-username: "Jacob",
-playTime: 300,
+const sortByDescendingFriendCount = (users) =>
+users.toSorted((a, b) => b.friends.length - a.friends.length);
   
-// Метод для зміни імені профілю
-changeUsername(newName) {
-this.username = newName;
+console.log(
+sortByDescendingFriendCount([
+{
+name: "Moore Hensley",
+friends: ["Sharron Pace"],
+gender: "male",
 },
-  
-// Метод для збільшення ігрових годин
-updatePlayTime(hours) {
-this.playTime += hours;
+{
+name: "Sharlene Bush",
+friends: ["Briana Decker", "Sharron Pace"],
+gender: "female",
 },
-  
-// Метод для отримання інформації про профіль
-getInfo() {
-return `${this.username} has ${this.playTime} active hours!`;
-}
-};
-  
-// Код для перевірки
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
-  
-profile.changeUsername("Marco");
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
-  
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+{
+name: "Ross Vazquez",
+friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+gender: "male",
+},
+{
+name: "Elma Head",
+friends: ["Goldie Gentry", "Aisha Tran"],
+gender: "female",
+},
+{
+name: "Carey Barr",
+friends: ["Jordan Sampson", "Eddie Strong"],
+gender: "male",
+},
+{
+name: "Blackburn Dotson",
+friends: ["Jacklyn Lucas", "Linda Chapman"],
+gender: "male",
+},
+{
+name: "Sheree Anthony",
+friends: ["Goldie Gentry", "Briana Decker"],
+gender: "female",
+},
+])
+);
