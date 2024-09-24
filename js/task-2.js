@@ -1,59 +1,30 @@
-const getUsersWithFriend = (users, friendName) => 
-users.filter(user => user.friends.includes(friendName));
+const customer = {
+username: "Mango",
+balance: 24000,
+discount: 0.1,
+orders: ["Burger", "Pizza", "Salad"],
+// Change code below this line
+getBalance() {
+return this.balance;
+},
+getDiscount() {
+return this.discount;
+},
+setDiscount(value) {
+this.discount = value;
+},
+getOrders() {
+return this.orders;
+},
+addOrder(cost, order) {
+this.balance -= cost - cost * this.discount;
+this.orders.push(order);
+},
+// Change code above this line
+};
   
-const allUsers = [
-{
-name: "Moore Hensley",
-friends: ["Sharron Pace"]
-},
-{
-name: "Sharlene Bush",
-friends: ["Briana Decker", "Sharron Pace"]
-},
-{
-name: "Ross Vazquez",
-friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"]
-},
-{
-name: "Elma Head",
-friends: ["Goldie Gentry", "Aisha Tran"]
-},
-{
-name: "Carey Barr",
-friends: ["Jordan Sampson", "Eddie Strong"]
-},
-{
-name: "Blackburn Dotson",
-friends: ["Jacklyn Lucas", "Linda Chapman"]
-},
-{
-name: "Sheree Anthony",
-friends: ["Goldie Gentry", "Briana Decker"]
-}
-];
-  
-console.log(getUsersWithFriend(allUsers, "Briana Decker")); 
-// [
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
-  
-console.log(getUsersWithFriend(allUsers, "Goldie Gentry"));
-// [
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
-  
-console.log(getUsersWithFriend(allUsers, "Adrian Cross" )); // []
+customer.setDiscount(0.15);
+console.log(customer.getDiscount()); // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance()); // 19750
+console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
