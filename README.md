@@ -1,35 +1,33 @@
-class Storage {
-  #items; // приватна властивість
+class StringBuilder {
+  #value;
 
-  constructor(items) {
-    this.#items = items;
+  constructor(initialValue) {
+    this.#value = initialValue;
   }
 
-  // Метод для отримання поточних товарів
-  getItems() {
-    return this.#items;
+  getValue() {
+    return this.#value;
   }
 
-  // Метод для додавання нового товару
-  addItem(newItem) {
-    this.#items.push(newItem);
+  padEnd(str) {
+    this.#value += str;
   }
 
-  // Метод для видалення товару
-  removeItem(itemToRemove) {
-    this.#items = this.#items.filter(item => item !== itemToRemove);
+  padStart(str) {
+    this.#value = str + this.#value;
+  }
+
+  padBoth(str) {
+    this.#value = str + this.#value + str;
   }
 }
 
-// Код для перевірки
-const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
-
-storage.addItem("Droid");
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
-
-storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
-
-storage.removeItem("Scaner");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+// Перевірка
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+console.log(builder.getValue()); // "=^.^="
