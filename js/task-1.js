@@ -1,32 +1,40 @@
-class Storage {
-#items; // Приватна властивість для зберігання товарів
+class Customer {
+#name;  // Приватні властивості
+#age;
+#purchases;
 
-constructor(initialItems) {
-this.#items = initialItems; // Ініціалізуємо приватну властивість
+constructor(name, age, purchases = []) {
+this.#name = name;
+this.#age = age;
+this.#purchases = purchases;
 }
 
-getItems() {
-return this.#items; // Повертаємо поточні товари
+getDetails() {
+return `${this.#name}, Age: ${this.#age}`;
 }
 
-addItem(newItem) {
-this.#items.push(newItem); // Додаємо новий товар
+addPurchase(purchase) {
+this.#purchases.push(purchase);
 }
 
-removeItem(itemToRemove) {
-this.#items = this.#items.filter(item => item !== itemToRemove); // Видаляємо товар
+removePurchase(purchase) {
+this.#purchases = this.#purchases.filter(item => item !== purchase);
+}
+
+getPurchases() {
+return this.#purchases;
 }
 }
 
-// Ініціалізація екземпляра та виклики методів для перевірки
-const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+// Створення екземпляра класу
+const customer = new Customer("John Doe", 30, ["Book", "Pen", "Notebook"]);
+console.log(customer.getDetails()); // John Doe, Age: 30
+console.log(customer.getPurchases()); // ["Book", "Pen", "Notebook"]
 
-storage.addItem("Droid");
-console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+// Додаємо покупку
+customer.addPurchase("Laptop");
+console.log(customer.getPurchases()); // ["Book", "Pen", "Notebook", "Laptop"]
 
-storage.removeItem("Prolonger");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
-
-storage.removeItem("Scaner");
-console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+// Видаляємо покупку
+customer.removePurchase("Pen");
+console.log(customer.getPurchases()); // ["Book", "Notebook", "Laptop"]
