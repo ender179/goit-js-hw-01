@@ -1,40 +1,30 @@
-class Customer {
-#name;  // Приватні властивості
-#age;
-#purchases;
+const customer = {
+username: "Mango",
+balance: 24000,
+discount: 0.1,
+orders: ["Burger", "Pizza", "Salad"],
+// Change code below this line
+getBalance() {
+return this.balance;
+},
+getDiscount() {
+return this.discount;
+},
+setDiscount(value) {
+this.discount = value;
+},
+getOrders() {
+return this.orders;
+},
+addOrder(cost, order) {
+this.balance -= cost - cost * this.discount;
+this.orders.push(order);
+},
+// Change code above this line
+};
 
-constructor(name, age, purchases = []) {
-this.#name = name;
-this.#age = age;
-this.#purchases = purchases;
-}
-
-getDetails() {
-return `${this.#name}, Age: ${this.#age}`;
-}
-
-addPurchase(purchase) {
-this.#purchases.push(purchase);
-}
-
-removePurchase(purchase) {
-this.#purchases = this.#purchases.filter(item => item !== purchase);
-}
-
-getPurchases() {
-return this.#purchases;
-}
-}
-
-// Створення екземпляра класу
-const customer = new Customer("John Doe", 30, ["Book", "Pen", "Notebook"]);
-console.log(customer.getDetails()); // John Doe, Age: 30
-console.log(customer.getPurchases()); // ["Book", "Pen", "Notebook"]
-
-// Додаємо покупку
-customer.addPurchase("Laptop");
-console.log(customer.getPurchases()); // ["Book", "Pen", "Notebook", "Laptop"]
-
-// Видаляємо покупку
-customer.removePurchase("Pen");
-console.log(customer.getPurchases()); // ["Book", "Notebook", "Laptop"]
+customer.setDiscount(0.15);
+console.log(customer.getDiscount()); // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance()); // 19750
+console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
