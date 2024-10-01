@@ -1,33 +1,30 @@
-class StringBuilder {
-  #value;
+# Критерії приймання
 
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
+- Створено репозиторій goit-js-hw-06.
 
-  getValue() {
-    return this.#value;
-  }
+- Домашня робота містить два посилання: на вихідні файли і робочу сторінку на
+GitHub Pages.
 
-  padEnd(str) {
-    this.#value += str;
-  }
+- Завдання виконані у точній відповідності до ТЗ (забороняється змінювати
+вихідний HTML завдання).
 
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
+- В консолі відсутні помилки і попередження під час відкриття живої сторінки
+завдання.
 
-  padBoth(str) {
-    this.#value = str + this.#value + str;
-  }
-}
+- Імена змінних і функцій - зрозумілі та описові.
 
-// Перевірка
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+- Код відформатований за допомогою Prettier.
+
+- Стартові файли Завантажуй стартові файли з готовою розміткою та підключеними
+файлами скриптів для кожного завдання.
+
+- Скопіюй їх собі у проект.
+
+![GitHub actions settings](./assets/text-1.png)
+
+![GitHub actions settings](./assets/text-2.png)
+![GitHub actions settings](./assets/text-3.png)
+
+![GitHub actions settings](./assets/text-4.png)
+![GitHub actions settings](./assets/text-5.png)
+![GitHub actions settings](./assets/text-6.png)
