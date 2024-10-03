@@ -1,26 +1,26 @@
-const ingredients = [
-'Potatoes',
-'Mushrooms',
-'Garlic',
-'Tomatos',
-'Herbs',
-'Condiments',
+const images = [
+  {
+    url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat",
+  },
+  {
+    url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+  },
+  {
+    url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",
+    alt: "Alpine Spring Meadows",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",
+    alt: "Nature Landscape",
+  },
+  {
+    url: "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
+    alt: "Lighthouse Coast Sea",
+  }
 ];
-  
-// Напиши скрипт, який для кожного елемента масиву ingredients:
-// 1. Створить окремий елемент <li>. Обов'язково використовуй метод document.createElement().
-// 2. Додасть назву інгредієнта як його текстовий вміст.
-// 3. Додасть елементу клас item.
-// 4. Після чого, вставить усі <li> за одну операцію у список ul#ingredients.
-  
-const ingredientsEl = document.querySelector("#ingredients");
-console.log(ingredientsEl);
-console.log(ingredients);
-  
-const listRefs = ingredients.map((ingredient) => {
-const listRefs = document.createElement("li");
-listRefs.textContent = ingredient;
-listRefs.classList.add("item");
-return listRefs;
-});
-ingredientsEl.append(...listRefs);
