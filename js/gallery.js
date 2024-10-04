@@ -1,49 +1,66 @@
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
+import images from './data.js';
 
-// console.log(galleryItems);
+const gallery = document.querySelector('.gallery');
 
-
-const galleryMarkUp = document.querySelector('.gallery');
-
-const galleryEl = galleryItems
-.map(({ preview, description, original }) => 
-`<div class="gallery__item">
-<a class="gallery__link" href="${original}">
+const markup = images.map(({ preview, original, description }) => {
+return `<li class="gallery-item">
+<a class="gallery-link" href="${removeFirstLaseChar(original)}">
 <img
-class="gallery__image"
-src="${preview}"
-data-source="${original}"
+class="gallery-image"
+src="${removeFirstLaseChar(preview)}"
+data-source="${removeFirstLaseChar(original)}"
 alt="${description}"
 />
 </a>
-</div>`)
-.join('');
+</li>`;
+});
 
-galleryMarkUp.insertAdjacentHTML('beforeend', galleryEl)
+gallery.insertAdjacentHTML('beforeend', markup.join(''));
 
-galleryMarkUp.addEventListener('click', onImgClick)
-
-function onImgClick(evt) {
-evt.preventDefault();
-
-if (evt.target.nodeName !== 'IMG') {
-return;
+gallery.addEventListener('click', event => {
+event.preventDefault();
+if (event.target.nodeName === 'IMG') {
+openModal(event.target.dataset.source);
 }
+});
 
-const modal = basicLightbox.create(
-`<img src="${evt.target.dataset.source}" width="800" height="600">`,
+document.addEventListener('keydown', event => {
+const modal = document.querySelector('.modal');
+if (
+event.code === 'Enter' ||
+event.code === 'NumpadEnter' ||
+(event.code === 'Space' && !modal)
+) {
+openModal(event.target.querySelector('img').dataset.source);
+}
+});
 
-{   onShow: () => window.addEventListener('keydown', onEscKeyPress),
-onClose: () => window.removeEventListener('keydown', onEscKeyPress),
+function openModal(src) {
+const instance = basicLightbox.create(
+`<img src="${src}" width="1112" height="640">
+`,
+{
+className: 'modal',
+
+onShow: instance => {
+document.addEventListener('keydown', onEscapePress);
+},
+
+onClose: instance => {
+document.addEventListener('keydown', onEscapePress);
+},
 }
 );
-    
-modal.show();
 
-function onEscKeyPress(evt) {   
-if (evt.code === "Escape") {
-modal.close();
+instance.show();
+
+function onEscapePress(event) {
+if (event.code === 'Escape') {
+instance.close();
 }
 }
+}
+
+function removeFirstLaseChar(string) {
+return string.slice(1, string.length - 1);
 }
