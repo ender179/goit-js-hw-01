@@ -48,7 +48,7 @@ document.addEventListener('keydown', onEscapePress);
 },
 
 onClose: instance => {
-document.addEventListener('keydown', onEscapePress);
+document.removeEventListener('keydown', onEscapePress);
 },
 }
 );
