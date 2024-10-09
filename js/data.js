@@ -63,5 +63,5 @@ original:
 description: 'Lighthouse Coast Sea',
 },
 ];
-  
+      
 export default images;
